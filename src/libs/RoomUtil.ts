@@ -19,8 +19,8 @@ export function getRoomInfo(id: string): RoomInfo {
 export function makeCard(roomId: string, userId: string): number[] {
     const seed = stringTo32BitHash(`${roomId}-${userId}`);
     const shuffle = createShuffle(seed);
-    const card = shuffle(NUMBER_1_99).slice(0, 99);
-    card[13] = 0;
+    const card = shuffle(NUMBER_1_99).slice(0, 25);
+    card[12] = 0;
     return card;
 }
 

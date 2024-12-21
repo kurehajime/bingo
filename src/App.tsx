@@ -3,6 +3,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom'
 import Join from './pages/Join'
 import Top from './pages/Top'
 import Lottery from './pages/Lottery'
+import Card from './pages/Card'
 
 function App() {
 
@@ -16,7 +17,10 @@ function App() {
           <Route path="/join/:roomId" element={
             <Join />
           } />
-          <Route path="*" element={
+          <Route path="/:roomId/:userId" element={
+            <Card />
+          } />
+          <Route path="/" element={
             <Top />
           } />
         </Routes>

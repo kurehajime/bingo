@@ -41,10 +41,12 @@ export default function Lottery() {
                 <button
                     className="bg-red-500 text-white px-4 py-2 rounded-md"
                     onClick={() => {
-                        setTurn(0);
-                        const uuid = crypto.randomUUID();
-                        localStorage.setItem('roomKey', uuid);
-                        setRoomInfo(getRoomInfo(uuid));
+                        if (window.confirm('ルームを作り直すと参加者にもう一度カードを配りなおす必要があります。よろしいですか？')) {
+                            setTurn(0);
+                            const uuid = crypto.randomUUID();
+                            localStorage.setItem('roomKey', uuid);
+                            setRoomInfo(getRoomInfo(uuid));
+                        }
                     }}>ルームを作り直す</button>
             </div>
         </div>
