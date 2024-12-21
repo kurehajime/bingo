@@ -1,8 +1,8 @@
 import './App.css'
 import { HashRouter, Routes, Route } from 'react-router-dom'
-import Create from './pages/Create'
 import Join from './pages/Join'
 import Top from './pages/Top'
+import Lottery from './pages/Lottery'
 
 function App() {
 
@@ -10,10 +10,10 @@ function App() {
     <>
       <HashRouter>
         <Routes >
-          <Route path="/create" element={
-            <Create />
+          <Route path="/lottery" element={
+            <Lottery />
           } />
-          <Route path="/join" element={
+          <Route path="/join/:roomId" element={
             <Join />
           } />
           <Route path="*" element={
