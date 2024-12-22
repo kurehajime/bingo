@@ -105,8 +105,16 @@ export default function Lottery() {
                             className="w-52 h-52"
                             value={joinUrl.toString()} />
                     </div>
-                    <div className="text-center text-xs font-bold w-full">
-                        <p>{joinUrl.toString()}</p>
+                    <div className="flex flex-row gap-2 w-full">
+                        <input type="text" className="w-full rounded-md px-2 text-center bg-blue-100 font-bold"
+                            defaultValue={joinUrl.toString()}
+                            disabled
+                        />
+                        <button className="bg-blue-500 text-white px-4 py-2 rounded-md w-15 active:bg-blue-700"
+                            title="クリップボードにコピーする"
+                            onClick={() => {
+                                navigator.clipboard.writeText(joinUrl.toString() || '');
+                            }}>📋</button>
                     </div>
                 </div>
                 <div className="text-center text-2xl font-bold w-full flex flex-col gap-2">
