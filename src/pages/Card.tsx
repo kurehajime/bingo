@@ -69,14 +69,14 @@ export default function Card() {
 
 function Cell({ index, value, open, setOpen }:
     { index: number, value: number, open: boolean, setOpen: Dispatch<SetStateAction<boolean[]>> }) {
-    return <div className={`rounded-md cell bg-gray-200`} onClick={() => {
+    return <div className={`rounded-md cell bg-yellow-200 border-2 border-yellow-500 bg-opacity-50`} onClick={() => {
         setOpen(prev => {
             const newOpen = [...prev];
             newOpen[index] = !newOpen[index];
             return newOpen;
         });
     }}>
-        <div className={`text-center rounded-full w-5/6 h-5/6 flex items-center justify-center ${open || value === 0 ? 'opened' : ''}`
+        <div className={`font-black text-center rounded-full w-5/6 h-5/6 flex items-center justify-center  bg-opacity-50 ${open || value === 0 ? 'opened' : ''}`
         }>{value !== 0 ? value : '🎉'}</div>
     </div >;
 }
