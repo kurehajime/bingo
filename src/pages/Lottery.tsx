@@ -10,7 +10,7 @@ export default function Lottery() {
     const [roomInfo, setRoomInfo] = useState<RoomInfo | null>(null);
     const [turn, setTurn] = useState(0);
     const [userId, setUserId] = useState('');
-    const [message, setMessage] = useState(`ビンゴ達成した人は自己申告してください`);
+    const [message, setMessage] = useState(``);
     const [isBingo, setIsBingo] = useState<boolean | null>(null);
     useEffect(() => {
         const key = localStorage.getItem('roomKey');
@@ -34,7 +34,7 @@ export default function Lottery() {
                 setIsBingo(false);
             }
         } else {
-            setMessage(`ビンゴ達成した人は自己申告してください`);
+            setMessage(``);
             setIsBingo(null);
         }
     }
