@@ -57,7 +57,7 @@ export default function Lottery() {
                     className="bg-blue-500 text-white px-4 py-2 rounded-md">参加する</Link>
             </div>
             <div>
-                <QRCodeSVG value={`${window.location.origin}/join/${roomInfo?.roomId}`} />
+                <QRCodeSVG value={`${window.location.origin}/#/join/${roomInfo?.roomId}`} />
             </div>
         </div>
     </div>;
