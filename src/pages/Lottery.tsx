@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { checkBingo, getLottery, getRoomInfo, makeCard, RoomInfo } from "../libs/RoomUtil";
 import { Link } from "react-router-dom";
 import { QRCodeSVG } from "qrcode.react";
-import { NUMBER_1_90 } from "../libs/consts";
+import { NUMBER_1_75 } from "../libs/consts";
 
 export default function Lottery() {
     const [roomInfo, setRoomInfo] = useState<RoomInfo | null>(null);
@@ -26,6 +26,8 @@ export default function Lottery() {
             } else {
                 setMessage(`残念！${userId}さんはビンゴ達成ではありません`);
             }
+        } else {
+            setMessage(`ビンゴ達成した人は自己申告してください`);
         }
     }
     return (
@@ -44,7 +46,7 @@ export default function Lottery() {
                     justifyContent: 'center'
                 }}>
                     {
-                        NUMBER_1_90.map((num) => {
+                        NUMBER_1_75.map((num) => {
                             const hit = lottery?.includes(num);
                             return <div key={num} className={`w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-xl ${hit ? 'bg-red-500' : ''}`}>
                                 {num}
@@ -66,26 +68,6 @@ export default function Lottery() {
                         onClick={() => {
                             setTurn(turn + 1);
                         }}>抽選する</button>
-                </div>
-                <div className="text-center text-2xl font-bold w-full flex flex-col gap-2">
-                    <label htmlFor="userId" className="w-full text-left text-xs">
-                        ビンゴ達成した人のIDを入力して確認する
-                    </label>
-                    <div className="flex flex-row gap-2 w-full">
-                        <input id="userId" type="text" className="w-full rounded-md px-2"
-                            placeholder="ID"
-                            value={userId}
-                            onChange={(e) => {
-                                setUserId(e.target.value);
-                            }}
-                        />
-                        <button
-                            className="bg-blue-500 text-white px-4 py-2 rounded-md w-40"
-                            onClick={() => { check() }}>確認</button>
-                    </div>
-                    <div className="text-center text-2xl w-full">
-                        {message}
-                    </div>
                 </div>
                 <div className="text-center text-2xl font-bold w-full">
                     <button
@@ -112,6 +94,26 @@ export default function Lottery() {
                     </div>
                     <div className="text-center text-xs font-bold w-full">
                         <p>{joinUrl.toString()}</p>
+                    </div>
+                </div>
+                <div className="text-center text-2xl font-bold w-full flex flex-col gap-2">
+                    <label htmlFor="userId" className="w-full text-left text-xs">
+                        ビンゴ達成した人のIDを入力して確認する
+                    </label>
+                    <div className="flex flex-row gap-2 w-full">
+                        <input id="userId" type="text" className="w-full rounded-md px-2"
+                            placeholder="ID"
+                            value={userId}
+                            onChange={(e) => {
+                                setUserId(e.target.value);
+                            }}
+                        />
+                        <button
+                            className="bg-blue-500 text-white px-4 py-2 rounded-md w-40"
+                            onClick={() => { check() }}>確認</button>
+                    </div>
+                    <div className="text-center text-2xl w-full">
+                        {message}
                     </div>
                 </div>
             </div>

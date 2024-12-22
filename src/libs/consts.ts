@@ -1,4 +1,4 @@
-export const NUMBER_1_90 = [
-    ...Array.from({ length: 90 }, (_, i) => i + 1),
+export const NUMBER_1_75 = [
+    ...Array.from({ length: 75 }, (_, i) => i + 1),
 ];
 
