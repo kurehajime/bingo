@@ -3,12 +3,14 @@ import { checkBingo, getLottery, getRoomInfo, makeCard, RoomInfo } from "../libs
 import { Link } from "react-router-dom";
 import { QRCodeSVG } from "qrcode.react";
 import { NUMBER_1_75 } from "../libs/consts";
+import './Lottery.css';
 
 export default function Lottery() {
     const [roomInfo, setRoomInfo] = useState<RoomInfo | null>(null);
     const [turn, setTurn] = useState(0);
     const [userId, setUserId] = useState('');
     const [message, setMessage] = useState(`ビンゴ達成した人は自己申告してください`);
+    const [isBingo, setIsBingo] = useState<boolean | null>(null);
     useEffect(() => {
         const key = localStorage.getItem('roomKey');
         if (key) {
@@ -23,16 +25,19 @@ export default function Lottery() {
             const bingo = checkBingo(card, lottery);
             if (bingo) {
                 setMessage(`${userId}さんはビンゴ達成です！`);
+                setIsBingo(true);
             } else {
                 setMessage(`残念！${userId}さんはビンゴ達成ではありません`);
+                setIsBingo(false);
             }
         } else {
             setMessage(`ビンゴ達成した人は自己申告してください`);
+            setIsBingo(null);
         }
     }
     return (
         <div className="flex w-full justify-center">
-            <div className="min-w-[550px] bg-white p-4 flex flex-col items-center justify-center">
+            <div className="min-w-[550px] bg-white  flex flex-col items-center justify-center">
                 <div>
                     <div className="text-center text-[300px] font-bold py-1 leading-none">
                         {lottery?.length > 0 ? lottery[lottery.length - 1] : '*'}
@@ -112,7 +117,7 @@ export default function Lottery() {
                             className="bg-blue-500 text-white px-4 py-2 rounded-md w-40"
                             onClick={() => { check() }}>確認</button>
                     </div>
-                    <div className="text-center text-2xl w-full">
+                    <div className={`text-center text-2xl w-full ${isBingo === true ? 'bingo' : isBingo === false ? 'not-bingo' : ''}`}>
                         {message}
                     </div>
                 </div>
