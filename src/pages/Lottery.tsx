@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { QRCodeSVG } from "qrcode.react";
 import { NUMBER_1_75 } from "../libs/consts";
 import './Lottery.css';
+import Rule from "./Rule";
 
 export default function Lottery() {
     const [roomInfo, setRoomInfo] = useState<RoomInfo | null>(null);
@@ -41,9 +42,14 @@ export default function Lottery() {
         <div className="flex w-full justify-center">
             <div className="min-w-[550px] bg-white  flex flex-col items-center justify-center">
                 <div>
-                    <div className="text-center text-[300px] font-bold py-1 leading-none">
-                        {lottery?.length > 0 ? lottery[lottery.length - 1] : '*'}
-                    </div>
+                    {
+                        lottery?.length > 0 ? <div className="text-center text-[300px] font-bold py-1 leading-none">
+                            {lottery[lottery.length - 1]}
+                        </div>
+                            :
+                            <Rule />
+                    }
+
                 </div>
                 <div className="flex justify-center my-4" style={{
                     display: 'grid',
