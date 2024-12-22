@@ -15,22 +15,25 @@ export default function Card() {
         });
     }, [roomId, userId]);
 
-    return <div>
-        <h1>ビンゴカード</h1>
-        <div>
-            <div>
-                ルームID: {roomId}
+    return <>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <div className="flex flex-col items-center justify-center p-4">
+            <h1 className="text-2xl font-bold mb-4">ビンゴカード</h1>
+            <div className="text-center mb-4">
+                <div className="mb-2">
+                    ルームID: {roomId}
+                </div>
+                <div>
+                    ユーザーID: {decodeURIComponent(userId || '')}
+                </div>
             </div>
-            <div>
-                ユーザーID: {decodeURIComponent(userId || '')}
+            <div id="cards">
+                {cards.map((card, index) => {
+                    return <Cell key={index} index={index} value={card} open={open[index]} setOpen={setOpen} />
+                })}
             </div>
         </div>
-        <div id="cards">
-            {cards.map((card, index) => {
-                return <Cell key={index} index={index} value={card} open={open[index]} setOpen={setOpen} />
-            })}
-        </div>
-    </div>;
+    </>;
 }
 
 function Cell({ index, value, open, setOpen }:
