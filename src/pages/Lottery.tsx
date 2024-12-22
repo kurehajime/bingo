@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { getLottery, getRoomInfo, RoomInfo } from "../libs/RoomUtil";
+import { Link } from "react-router-dom";
+import { QRCodeSVG } from "qrcode.react";
 
 export default function Lottery() {
     const [roomInfo, setRoomInfo] = useState<RoomInfo | null>(null);
@@ -15,7 +17,7 @@ export default function Lottery() {
 
     return <div>
         <h1>ビンゴ</h1>
-        <div>
+        <div className="flex flex-col gap-4">
             <div>
                 ルームID: {roomInfo?.roomId}
             </div>
@@ -48,6 +50,14 @@ export default function Lottery() {
                             setRoomInfo(getRoomInfo(uuid));
                         }
                     }}>ルームを作り直す</button>
+            </div>
+            <div>
+                <Link to={`/join/${roomInfo?.roomId}`}
+                    target="_blank"
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md">参加する</Link>
+            </div>
+            <div>
+                <QRCodeSVG value={`${window.location.origin}/join/${roomInfo?.roomId}`} />
             </div>
         </div>
     </div>;
