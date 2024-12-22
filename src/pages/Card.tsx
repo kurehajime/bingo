@@ -17,44 +17,46 @@ export default function Card() {
 
     return <>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <div className="flex flex-col items-center justify-center p-4">
+        <div className="flex flex-col items-center justify-center p-4 min-h-screen w-full" id="bg">
             <h1 className="text-4xl font-black mb-4 w-full text-center">BINGO</h1>
             <div className="text-center w-full flex flex-row gap-2 justify-center max-w-[500px]">
-                <div className="mb-2 bg-blue-100 p-2 rounded-md">
+                <div className="mb-2 bg-yellow-100 p-2 rounded-md">
                     <label htmlFor="roomId" className="w-full text-left text-xs">ルームID</label>
                     <div className="flex flex-row gap-2 w-full">
-                        <input type="text" className="w-full rounded-md px-2 text-center bg-blue-100 font-bold"
+                        <input type="text" className="w-full rounded-md px-2 text-center bg-yellow-100 font-bold"
                             id="roomId"
                             defaultValue={roomId}
                             disabled
                         />
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-md w-40 active:bg-blue-700"
+                        <button className="bg-yellow-500 text-white px-4 py-2 rounded-md w-15 active:bg-yellow-700"
+                            title="クリップボードにコピーする"
                             onClick={() => {
                                 navigator.clipboard.writeText(roomId || '');
                             }}>📋</button>
                     </div>
 
                 </div>
-                <div className="mb-2 bg-blue-100 p-2 rounded-md">
+                <div className="mb-2 bg-yellow-100 p-2 rounded-md">
                     <label htmlFor="userId" className="w-full text-left text-xs">ユーザーID</label>
                     <div className="flex flex-row gap-2 w-full">
-                        <input type="text" className="w-full rounded-md px-2 text-center bg-blue-100 font-bold"
+                        <input type="text" className="w-full rounded-md px-2 text-center bg-yellow-100 font-bold"
                             id="userId"
                             defaultValue={decodeURIComponent(userId || '')}
                             disabled
                         />
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-md w-40 active:bg-blue-700"
+                        <button className="bg-yellow-500 text-white px-4 py-2 rounded-md w-15 active:bg-yellow-700"
+                            title="クリップボードにコピーする"
                             onClick={() => {
                                 navigator.clipboard.writeText(userId || '');
                             }}>📋</button>
                     </div>
                 </div>
             </div>
-            <div className="bg-blue-100 p-2 rounded-md w-full max-w-[500px]">
-                <p>
-                    主催者が案内した番号をクリックして穴を開けましょう。
-                    ビンゴしたら主催者にユーザーIDを申告してください。
-                </p>
+            <div className="bg-yellow-100 p-2 rounded-md w-full max-w-[500px] text-sm">
+                <ul className="pl-7">
+                    <li className="list-disc">主催者が発表した番号の穴を開けましょう</li>
+                    <li className="list-disc">ビンゴになったら主催者にユーザーIDを申告してください</li>
+                </ul>
             </div>
             <div id="cards">
                 {cards.map((card, index) => {
