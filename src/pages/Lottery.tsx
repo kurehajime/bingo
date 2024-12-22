@@ -18,7 +18,7 @@ export default function Lottery() {
         }
     }, []);
     const lottery = getLottery(roomInfo?.lotteryId ?? '', turn);
-    const joinUrl = new URL(`../#/join/${roomInfo?.roomId}`, `${window.location.origin}${window.location.pathname}`)
+    const joinUrl = new URL(`/#/join/${roomInfo?.roomId}`, `${window.location.origin}${window.location.pathname}`)
     const check = () => {
         if (userId !== '') {
             const card = makeCard(roomInfo?.roomId ?? '', userId);
