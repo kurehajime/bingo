@@ -69,14 +69,14 @@ export default function Lottery() {
                 </div>
                 <div className="text-center text-2xl font-bold w-full">
                     <button
-                        className="bg-blue-500 text-white px-4 py-2 rounded-md w-full"
+                        className="bg-blue-500 text-white px-4 py-2 rounded-md w-full active:bg-blue-700"
                         onClick={() => {
                             setTurn(turn + 1);
                         }}>抽選する</button>
                 </div>
                 <div className="text-center text-2xl font-bold w-full">
                     <button
-                        className="bg-red-500 text-white px-4 py-2 rounded-md w-full"
+                        className="bg-red-500 text-white px-4 py-2 rounded-md w-full active:bg-red-700"
                         onClick={() => {
                             if (window.confirm('ルームを作り直すと参加者にもう一度カードを配りなおす必要があります。よろしいですか？')) {
                                 setTurn(0);
@@ -114,10 +114,10 @@ export default function Lottery() {
                             }}
                         />
                         <button
-                            className="bg-blue-500 text-white px-4 py-2 rounded-md w-40"
+                            className="bg-blue-500 text-white px-4 py-2 rounded-md w-40 active:bg-blue-700"
                             onClick={() => { check() }}>確認</button>
                     </div>
-                    <div className={`text-center text-2xl w-full ${isBingo === true ? 'bingo' : isBingo === false ? 'not-bingo' : ''}`}>
+                    <div className={`text-center text-2xl  w-full ${isBingo === true ? 'bingo' : isBingo === false ? 'not-bingo' : ''}`}>
                         {message}
                     </div>
                 </div>
