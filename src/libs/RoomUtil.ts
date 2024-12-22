@@ -1,5 +1,5 @@
 import { createShuffle } from 'fast-shuffle'
-import { NUMBER_1_99 } from './consts';
+import { NUMBER_1_90 } from './consts';
 export type RoomInfo = {
     id: string;
     roomId: string;
@@ -19,7 +19,7 @@ export function getRoomInfo(id: string): RoomInfo {
 export function makeCard(roomId: string, userId: string): number[] {
     const seed = stringTo32BitHash(`${roomId}-${userId}`);
     const shuffle = createShuffle(seed);
-    const card = shuffle(NUMBER_1_99).slice(0, 25);
+    const card = shuffle(NUMBER_1_90).slice(0, 25);
     card[12] = 0;
     return card;
 }
@@ -30,7 +30,7 @@ export function getLottery(lotteryId: string, turn: number): number[] {
     }
     const seed = stringTo32BitHash(`${lotteryId}`);
     const shuffle = createShuffle(seed);
-    const lottery = shuffle(NUMBER_1_99).slice(0, turn);
+    const lottery = shuffle(NUMBER_1_90).slice(0, turn);
     return lottery;
 }
 
