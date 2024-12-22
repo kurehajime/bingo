@@ -17,7 +17,7 @@ function Join() {
             </span>
             <input type="text" className="border border-gray-300 rounded-md p-2 mb-4" placeholder="ユーザーID" value={userId} onChange={(e) => setUserId(e.target.value)} />
             <Link to={userId ? `/${roomId}/${encodeURIComponent(userId)}` : ''}
-                className={`bg-blue-500 text-white px-4 py-2 rounded-md ${userId ? '' : 'opacity-50 cursor-not-allowed'}`}
+                className={`bg-orange-500 text-white px-4 py-2 rounded-md ${userId ? '' : 'opacity-50 cursor-not-allowed'}`}
             >参加</Link>
         </div>
     );

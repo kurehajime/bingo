@@ -1,5 +1,5 @@
 export default function Rule() {
-    return <div className="flex flex-col items-start gap-4 bg-blue-100 rounded-md w-full max-w-[500px] text-sm">
+    return <div className="flex flex-col items-start gap-4 bg-yellow-100 rounded-md w-full max-w-[500px] text-sm">
         <div className="p-4">
             <h1 className="text-center text-base font-bold underline">このビンゴの遊び方</h1>
             <div className="text-left text-sm">
