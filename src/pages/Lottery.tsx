@@ -61,7 +61,7 @@ export default function Lottery() {
                     {
                         NUMBER_1_75.map((num) => {
                             const hit = lottery?.includes(num);
-                            return <div key={num} className={`w-8 h-8 flex items-center justify-center rounded-full bg-yellow-200 text-xl ${hit ? 'bg-orange-500 font-bold' : ''}`}>
+                            return <div key={num} className={`w-8 h-8 flex items-center justify-center rounded-full text-xl ${hit ? 'bg-orange-500 font-bold' : 'bg-yellow-200'}`}>
                                 {num}
                             </div>
                         })
