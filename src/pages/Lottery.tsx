@@ -107,7 +107,7 @@ export default function Lottery() {
                     </div>
                     <div className="flex flex-row gap-2 w-full">
                         <input type="text" className="w-full rounded-md px-2 text-center bg-yellow-100 font-bold"
-                            defaultValue={joinUrl.toString()}
+                            value={joinUrl.toString()}
                             disabled
                         />
                         <button className="bg-orange-500 text-white px-4 py-2 rounded-md w-15 active:bg-orange-700"
